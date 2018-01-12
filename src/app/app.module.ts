@@ -1,4 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
 
 
@@ -26,7 +27,8 @@ import {TwoWayBindingComponent} from './two-way-binding/two-way-bindig.component
     TwoWayBindingComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [
     CursosService,
