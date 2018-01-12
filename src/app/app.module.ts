@@ -9,6 +9,9 @@ import {CursosService} from './cursos/cursos.service';
 import { AuthorComponent } from './author/author.component';
 import {AuthorService} from './author.service';
 import { PropertyBindingComponent } from './property-binding/property-binding.component';
+import { EventBindingComponent } from './event-binding/event-binding.component';
+import { EventFilteringComponent } from './event-filtering/event-filtering.component';
+import {TwoWayBindingComponent} from './two-way-binding/two-way-bindig.component';
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { PropertyBindingComponent } from './property-binding/property-binding.co
     CoursesComponent,
     CursosComponent,
     AuthorComponent,
-    PropertyBindingComponent
+    PropertyBindingComponent,
+    EventBindingComponent,
+    EventFilteringComponent,
+    TwoWayBindingComponent
   ],
   imports: [
     BrowserModule
