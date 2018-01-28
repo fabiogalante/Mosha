@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
     {{ course.students | number }} <br/>
     {{ course.rating | number:'2.1-1' }} <br/>
     {{ course.price | currency:'BRL':true:'3.2-2' }} <br/>
-    {{ course.releaseDate | date:'shortDate' }} 
+    {{ course.releaseDate | date:'shortDate' }}
     `
 
 })
@@ -20,7 +20,7 @@ export class PipesComponent implements OnInit {
     students: 30123,
     price: 190.95,
     releaseDate: new Date(2016, 3, 1)
-  }
+  };
 
   constructor() { }
 
