@@ -2,10 +2,32 @@
   <div class="form-group">
     <label for="firstName">First Name</label>
     <input
-        required
-        minlength="3"
-        maxlength="10"
-        ngModel name="firstName" id="firstName" type="text" class="form-control">
+      required
+      minlength="5"
+      maxlength="10"
+      pattern="[a-zA-Z][a-zA-Z ]+"
+      ngModel
+      name="firstName"
+      #firstName="ngModel"
+      (change)="log(firstName)"
+      id="firstName"
+      type="text"
+      class="form-control">
+
+    <div
+      class="alert alert-danger"
+      *ngIf="firstName.touched && !firstName.valid">
+      <div *ngIf="firstName.errors.required">
+        First name é obrigatorio
+      </div>
+      <div *ngIf="firstName.errors.minlength">
+        First name é tem que ter {{ firstName.errors.minlength.requiredLength}} caracteres
+      </div>
+      <div *ngIf="firstName.errors.pattern">
+        First name pattern
+      </div>
+    </div>
+
   </div>
   <div class="form-group"><label for="comment">Comment</label>
     <textarea id="comment" cols="30" rows="10" class="form-control"></textarea>

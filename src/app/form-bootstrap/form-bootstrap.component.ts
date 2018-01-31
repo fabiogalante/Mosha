@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-form-bootstrap',
   templateUrl: './form-bootstrap.component.html',
   styleUrls: ['./form-bootstrap.component.css']
 })
-export class FormBootstrapComponent implements OnInit {
+export class FormBootstrapComponent {
 
-  constructor() { }
-
-  ngOnInit() {
+  log(firstName) {
+    console.log(firstName);
   }
 
 }
