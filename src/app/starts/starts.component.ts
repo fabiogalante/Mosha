@@ -1,21 +1,29 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-starts',
+  selector: 'favorite',
   template: `
       <span class="glyphicon"
-            [class.glyphicon-star]="isFavorite"
-            [class.glyphicon-star-empty]="!isFavorite"
+            [ngClass]="{
+              'glyphicon-star': isFavorite,
+              'glyphicon-star-empty': !isFavorite
+            }"
             (click)="onClick()"
       ></span>
-  `,
+
+      <h2>{{ title }}</h2>
+  `
 
 })
 export class StartsComponent  {
 
-  isFavorite = true;
+  @Input('is-favorite') isFavorite: boolean;
+  @Input() title: string;
+  @Output() change = new EventEmitter();
+
   onClick() {
     this.isFavorite = !this.isFavorite;
+    this.change.emit({ newValue: this.isFavorite });
   }
 
 }

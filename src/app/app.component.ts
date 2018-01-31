@@ -8,7 +8,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app';
 
-  OnClick() {
-    console.log('teste');
+  post = {
+    title: 'Title vindo do app.componente',
+    isFavorite: true
   }
+
+  onFavoriteChanged(eventArgs) {
+    console.log('onFavoriteChanged app.component.ts', eventArgs);
+  }
+
 }
