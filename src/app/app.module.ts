@@ -19,9 +19,6 @@ import {SummaryPipe} from './summary.pipe';
 import { StartsComponent } from './starts/starts.component';
 import { CaptionlettersComponent } from './captionletters/captionletters.component';
 import { TitleCasePipe } from './title-case.pipe';
-import { FavoriteComponent } from './favorite/favorite.component';
-import { DirectivesComponent } from './directives/directives.component';
-import { FormBootstrapComponent } from './form-bootstrap/form-bootstrap.component';
 
 
 @NgModule({
@@ -39,10 +36,7 @@ import { FormBootstrapComponent } from './form-bootstrap/form-bootstrap.componen
     SummaryPipe,
     StartsComponent,
     CaptionlettersComponent,
-    TitleCasePipe,
-    FavoriteComponent,
-    DirectivesComponent,
-    FormBootstrapComponent
+    TitleCasePipe
   ],
   imports: [
     BrowserModule,
