@@ -11,4 +11,8 @@ export class FormBootstrapComponent {
     console.log(firstName);
   }
 
+  submit(f) {
+    console.log(f);
+  }
+
 }
