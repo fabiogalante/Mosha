@@ -1,4 +1,5 @@
 <form #f="ngForm" (ngSubmit)="submit(f)">
+  <div></div>
   <div class="form-group">
     <label for="firstName">First Name</label>
     <input
@@ -38,7 +39,46 @@
     </div>
 
   </div>
-  <button class="btn btn-primary">
+
+  <!--div.checkbox>label>input[type='checkbox']-->
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ngModel name="isSubscribed"> Assinar lista de email para novidades no site
+    </label>
+  </div>
+
+  <!--div.form-group>label[for='contactMethod']+select[id='contactMethod'].form-control-->
+
+  <div class="form-group"><label for="contactMethod"></label>
+    <select ngModel name="contactMethod" id="contactMethod" class="form-control">
+      <option value="">Selecione</option>
+      <option *ngFor="let method of contactMethods" [value]="method.id">{{ method.name }}</option>
+    </select>
+  </div>
+
+  <!--No value obtem um json-->
+  <div class="form-group"><label for="contactMethod2"></label>
+    <select multiple ngModel name="contactMethod2" id="contactMethod2" class="form-control">
+      <option *ngFor="let method of contactMethods" [ngValue]="method">{{ method.name }}</option>
+    </select>
+  </div>
+
+
+  <!--div.radio>label>input[type='radio'][name='contatcMethod']-->
+
+  <div  *ngFor="let method of contactMethods" class="radio">
+    <label>
+      <input ngModel type="radio" name="contactMethodRadio" [value]="method.id">
+      {{ method.name }}
+    </label>
+  </div>
+
+  <p>
+    {{ f.value | json }}
+  </p>
+
+  <button class="btn btn-primary" [disabled]="!f.valid">
     Submit
   </button>
 </form>
