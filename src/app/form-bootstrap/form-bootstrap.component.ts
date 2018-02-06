@@ -7,8 +7,18 @@ import {Component} from '@angular/core';
 })
 export class FormBootstrapComponent {
 
+  contactMethods = [
+    { id: 1, name: 'Email'},
+    { id: 2, name: 'Fone'},
+    { id: 3, name: 'Celular'},
+    { id: 4, name: 'Correios'},
+  ];
+
   log(firstName) {
     console.log(firstName);
   }
 
+  submit(f) {
+    console.log(f);
+  }
 }

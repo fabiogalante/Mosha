@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
 
 
@@ -22,6 +22,7 @@ import { TitleCasePipe } from './title-case.pipe';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { DirectivesComponent } from './directives/directives.component';
 import { FormBootstrapComponent } from './form-bootstrap/form-bootstrap.component';
+import {SignupFormComponent} from './signup-form/signup-form.component';
 
 
 @NgModule({
@@ -42,11 +43,13 @@ import { FormBootstrapComponent } from './form-bootstrap/form-bootstrap.componen
     TitleCasePipe,
     FavoriteComponent,
     DirectivesComponent,
-    FormBootstrapComponent
+    FormBootstrapComponent,
+    SignupFormComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     CursosService,
