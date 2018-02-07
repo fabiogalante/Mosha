@@ -25,6 +25,7 @@ import { FormBootstrapComponent } from './form-bootstrap/form-bootstrap.componen
 import {SignupFormComponent} from './signup-form/signup-form.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { FormBuilderComponent } from './form-builder/form-builder.component';
     FormBootstrapComponent,
     SignupFormComponent,
     NewCourseFormComponent,
-    FormBuilderComponent
+    FormBuilderComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
