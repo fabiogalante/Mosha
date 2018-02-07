@@ -28,6 +28,22 @@ export class SignupFormComponent {
   get password() {
     return this.form.get('password');
   }
+
+  login() {
+    this.form.setErrors({
+      invalidLogin: true
+    });
+  }
+
+  onSave($event) {
+
+    let teste = 10;
+    let teste2 = teste;
+
+    console.log(teste2);
+
+    console.log($event);
+  }
 }
 
 
