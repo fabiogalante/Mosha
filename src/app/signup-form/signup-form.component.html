@@ -6,10 +6,12 @@
             id="username"
             type="text"
             class="form-control">
+      <div *ngIf="username.pending">Validando se o login já existe! Aguarde..</div>
       <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
         <div *ngIf="username.errors.required">Usarname é obrigatório</div>
         <div *ngIf="username.errors.cannotContainSpace">Usarname não pode ter espaço</div>
         <div *ngIf="username.errors.minlength">Usarname deve ter no minino {{ username.errors.minlength.requiredLength }} caracteres</div>
+        <div *ngIf="username.errors.shouldBeUnique"> Nome de usuário já cadastrado, selecione outro. </div>
       </div>
     </div>
     <div class="form-group">
