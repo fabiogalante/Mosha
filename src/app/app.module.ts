@@ -24,6 +24,7 @@ import { DirectivesComponent } from './directives/directives.component';
 import { FormBootstrapComponent } from './form-bootstrap/form-bootstrap.component';
 import {SignupFormComponent} from './signup-form/signup-form.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
+import { FormBuilderComponent } from './form-builder/form-builder.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { NewCourseFormComponent } from './new-course-form/new-course-form.compon
     DirectivesComponent,
     FormBootstrapComponent,
     SignupFormComponent,
-    NewCourseFormComponent
+    NewCourseFormComponent,
+    FormBuilderComponent
   ],
   imports: [
     BrowserModule,

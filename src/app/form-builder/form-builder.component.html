@@ -1,0 +1,23 @@
+
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="form-group">
+      <input [(ngModel)]="email"
+             formControlName="email"
+             type="text"
+             placeholder="E-mail"
+      />
+
+    </div>
+    <h6 *ngIf="errorEmail" class="error"> {{messageEmail}}</h6>
+    <div class="form-group">
+      <input [(ngModel)]="password"
+             formControlName="password"
+             type="password"
+             placeholder="Senha"
+      />
+
+    </div>
+    <h6 *ngIf="errorPassword" class="error"> {{messagePassword}}</h6>
+    <button class="login-button">Login</button>
+  </form>
+
