@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-
 @Component({
   selector: 'signup-form',
   templateUrl: './signup-form.component.html',
@@ -16,12 +15,9 @@ export class SignupFormComponent {
     })
   });
 
-
   get username() {
     return this.form.get('account.username');
   }
-
-
 }
 
 

@@ -23,6 +23,7 @@ import { FavoriteComponent } from './favorite/favorite.component';
 import { DirectivesComponent } from './directives/directives.component';
 import { FormBootstrapComponent } from './form-bootstrap/form-bootstrap.component';
 import {SignupFormComponent} from './signup-form/signup-form.component';
+import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {SignupFormComponent} from './signup-form/signup-form.component';
     FavoriteComponent,
     DirectivesComponent,
     FormBootstrapComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    NewCourseFormComponent
   ],
   imports: [
     BrowserModule,
