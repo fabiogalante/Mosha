@@ -25,6 +25,7 @@ import { FormBootstrapComponent } from './form-bootstrap/form-bootstrap.componen
 import {SignupFormComponent} from './signup-form/signup-form.component';
 import { PostsComponent } from './posts/posts.component';
 import {HttpModule} from '@angular/http';
+import {PostService} from './services/post.service';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import {HttpModule} from '@angular/http';
   providers: [
     CursosService,
     // AuthorService
+    PostService
   ],
   bootstrap: [AppComponent]
 })

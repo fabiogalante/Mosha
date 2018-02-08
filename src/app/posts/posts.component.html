@@ -8,6 +8,11 @@
   <li
     *ngFor="let post of posts"
     class="list-group-item">
+
+    <button
+      (click)="testAxios()"
+      class="btn btn-default btn-sm">Testar Axios</button>
+
     <button
       (click)="updatePost(post)"
       class="btn btn-default btn-sm">Atualizar</button>

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Http} from '@angular/http';
+import {PostService} from '../services/post.service';
+
 
 @Component({
   selector: 'app-posts',
@@ -8,15 +9,13 @@ import {Http} from '@angular/http';
 })
 export class PostsComponent implements OnInit {
 
-
   posts: any[];
-  private url = 'https://jsonplaceholder.typicode.com/posts';
 
-  constructor(private http: Http) {
+  constructor(private service: PostService) {
   }
 
-  ngOnInit(): void {
-    this.http.get(this.url)
+  ngOnInit() {
+    this.service.getPosts()
       .subscribe(response => {
         this.posts = response.json();
       });
@@ -26,7 +25,7 @@ export class PostsComponent implements OnInit {
     const post = {title: input.value};
     input.value = '';
 
-    this.http.post(this.url, JSON.stringify(post))
+    this.service.createPost(post)
       .subscribe(response => {
         post['id'] = response.json().id;
         this.posts.splice(0, 0, post);
@@ -35,27 +34,26 @@ export class PostsComponent implements OnInit {
 
   updatePost(post) {
 
-    // Patch envia somente alguns dados do objeto
-    // {"isRead":true}
-    this.http.patch(`${this.url}/${post.id}`, JSON.stringify({isRead: true}))
+    this.service.patchPost(post)
       .subscribe(response => {
         console.log(response.json());
       });
 
-    // Put envia o objeto inteiro
-    // {"userId":1,"id":1,"title":"sunt aut facere repeptio reprehenderit",
-    // "body":"utem sunt rem eveniet architecto"}
-    this.http.put(`${this.url}/${post.id}`, JSON.stringify(post))
+    this.service.putPost(post)
       .subscribe(response => {
         console.log(response.json());
       });
   }
 
   deletePost(post) {
-    this.http.delete(`${this.url}/${post.id}`)
-      .subscribe(response => {
+    this.service.deletePost(post)
+      .subscribe(() => {
         const index = this.posts.indexOf(post);
         this.posts.splice(index, 1);
       });
+  }
+
+  testAxios () {
+    this.service.testAxios();
   }
 }
