@@ -23,6 +23,8 @@ import { FavoriteComponent } from './favorite/favorite.component';
 import { DirectivesComponent } from './directives/directives.component';
 import { FormBootstrapComponent } from './form-bootstrap/form-bootstrap.component';
 import {SignupFormComponent} from './signup-form/signup-form.component';
+import { PostsComponent } from './posts/posts.component';
+import {HttpModule} from '@angular/http';
 
 
 @NgModule({
@@ -44,12 +46,14 @@ import {SignupFormComponent} from './signup-form/signup-form.component';
     FavoriteComponent,
     DirectivesComponent,
     FormBootstrapComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [
     CursosService,
