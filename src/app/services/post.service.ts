@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
+import 'rxjs/add/operator/catch';
+import { Observable } from 'rxjs/Observable';
 import axios from 'axios';
 
 
@@ -31,7 +33,10 @@ export class PostService {
   }
 
   deletePost(post) {
-    return this.http.delete(`${this.url}/${post.id}`);
+    return this.http.delete(`${this.url}/${post.id}`)
+      .catch((error: Response) => {
+
+      });
   }
   testAxios() {
     axios.get(this.url)

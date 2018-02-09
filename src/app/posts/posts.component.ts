@@ -18,6 +18,9 @@ export class PostsComponent implements OnInit {
     this.service.getPosts()
       .subscribe(response => {
         this.posts = response.json();
+      }, error => {
+        alert('Ocorreu um erro ao acessar o serviço');
+        console.log(error);
       });
   }
 
@@ -47,13 +50,23 @@ export class PostsComponent implements OnInit {
 
   deletePost(post) {
     this.service.deletePost(post)
-      .subscribe(() => {
-        const index = this.posts.indexOf(post);
-        this.posts.splice(index, 1);
-      });
+      .subscribe(
+        () => {
+          const index = this.posts.indexOf(post);
+          this.posts.splice(index, 1);
+        },
+        (error: Response) => {
+          if (error.status === 404) {
+            alert('Este registro já foi excluído');
+          }
+          else {
+            alert('Ocorreu um erro ao acessar o serviço');
+            console.log(error);
+          }
+        });
   }
 
-  testAxios () {
+  testAxios() {
     this.service.testAxios();
   }
 }
