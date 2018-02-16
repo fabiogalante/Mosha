@@ -19,7 +19,10 @@ export class PostService {
   }
 
   createPost(post) {
-    return this.http.post(this.url, JSON.stringify(post));
+    return this.http.post(this.url, JSON.stringify(post))
+      .catch((error: Response) => {
+
+    });
   }
 
   putPost(post) {

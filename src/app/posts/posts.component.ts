@@ -68,9 +68,9 @@ export class PostsComponent implements OnInit {
           const index = this.posts.indexOf(post);
           this.posts.splice(index, 1);
         },
-        (error: Response) => {
-          if (error.status === 404) {
-            alert('Este registro já foi excluído');
+        (error: AppError) => {
+          if (error instanceof NotfoundError) {
+            alert('Este registro já foi excluído - 404');
           }
           else {
             alert('Ocorreu um erro ao acessar o serviço');
