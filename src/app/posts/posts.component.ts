@@ -21,9 +21,6 @@ export class PostsComponent implements OnInit {
     this.service.getPosts()
       .subscribe(response => {
         this.posts = response.json();
-      }, error => {
-        alert('Ocorreu um erro ao acessar o serviço');
-        console.log(error);
       });
   }
 
@@ -41,12 +38,8 @@ export class PostsComponent implements OnInit {
             // this.form.SetErrors(error.originalError);
             alert('Registro excluído');
           }
-          else {
-            alert('Ocorreu um erro');
-            console.log(error);
-          }
-        }
-      );
+          else throw error;
+        });
   }
 
   updatePost(post) {
@@ -73,10 +66,7 @@ export class PostsComponent implements OnInit {
           if (error instanceof NotfoundError) {
             alert('Este registro já foi excluído - 404');
           }
-          else {
-            alert('Ocorreu um erro ao acessar o serviço');
-            console.log(error);
-          }
+          else throw error;
         });
   }
 

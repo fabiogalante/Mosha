@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NgModule} from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 
 
 import {AppComponent} from './app.component';
@@ -26,6 +26,7 @@ import {SignupFormComponent} from './signup-form/signup-form.component';
 import { PostsComponent } from './posts/posts.component';
 import {HttpModule} from '@angular/http';
 import {PostService} from './services/post.service';
+import {AppErrorHandler} from './common/app-error-handler';
 
 
 @NgModule({
@@ -59,7 +60,9 @@ import {PostService} from './services/post.service';
   providers: [
     CursosService,
     // AuthorService
-    PostService
+    PostService,
+    FormsModule,
+    { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
