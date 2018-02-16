@@ -3,6 +3,8 @@ import {Http} from '@angular/http';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Observable';
 import axios from 'axios';
+import {AppError} from '../common/app-erros';
+import {NotfoundError} from '../common/not-found-error';
 
 
 @Injectable()
@@ -35,7 +37,10 @@ export class PostService {
   deletePost(post) {
     return this.http.delete(`${this.url}/${post.id}`)
       .catch((error: Response) => {
+        if (error.status === 404)
+          return Observable.throw(new NotfoundError());
 
+        return Observable.throw(new AppError(error));
       });
   }
   testAxios() {
