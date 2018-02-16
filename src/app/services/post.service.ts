@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
-import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
 import axios from 'axios';
 import {AppError} from '../common/app-erros';
 import {NotfoundError} from '../common/not-found-error';
 import {BadInput} from '../common/bad-input';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/catch';
 
 
 @Injectable()
@@ -13,7 +14,8 @@ export class PostService {
 
   private url = 'https://jsonplaceholder.typicode.com/posts';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+  }
 
   getPosts() {
     return this.http.get(this.url);
@@ -26,7 +28,7 @@ export class PostService {
           return Observable.throw(new BadInput(error.json()));
         }
         return Observable.throw(new AppError(error.json()));
-    });
+      });
   }
 
   putPost(post) {
@@ -35,6 +37,7 @@ export class PostService {
     // "body":"utem sunt rem eveniet architecto"}
     return this.http.put(`${this.url}/${post.id}`, JSON.stringify(post));
   }
+
   patchPost(post) {
     // Patch envia somente alguns dados do objeto
     // {"isRead":true}
@@ -45,12 +48,12 @@ export class PostService {
     return this.http.delete(`${this.url}/${post.id}`)
       .catch((error: Response) => {
         if (error.status === 404) {
-          return Observable.throw(new NotfoundError());
+          return Observable.throw(new NotfoundError(error));
         }
-
         return Observable.throw(new AppError(error));
       });
   }
+
   testAxios() {
     axios.get(this.url)
       .then(function (response) {
