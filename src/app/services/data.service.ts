@@ -7,6 +7,7 @@ import {NotfoundError} from '../common/not-found-error';
 import {BadInput} from '../common/bad-input';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 
 @Injectable()
@@ -17,11 +18,15 @@ export class DataService {
 
   getAll() {
     return this.http.get(this.url)
+      .map(response => response.json())
       .catch(this.handleError);
   }
 
   create(resource) {
+    // return Observable.throw(new AppError());
+
     return this.http.post(this.url, JSON.stringify(resource))
+      .map(response => response.json())
       .catch(this.handleError);
   }
 
@@ -37,11 +42,13 @@ export class DataService {
     // Patch envia somente alguns dados do objeto
     // {"isRead":true}
     return this.http.patch(`${this.url}/${resource.id}`, JSON.stringify({isRead: true}))
+      .map(response => response.json())
       .catch(this.handleError);
   }
 
   delete(id) {
     return this.http.delete(this.url + '/' +  id)
+      .map(response => response.json())
       .catch(this.handleError);
     // `${this.url}/${id}`
   }
