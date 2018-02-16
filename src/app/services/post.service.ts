@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import axios from 'axios';
 import {AppError} from '../common/app-erros';
 import {NotfoundError} from '../common/not-found-error';
+import {BadInput} from '../common/bad-input';
 
 
 @Injectable()
@@ -21,7 +22,10 @@ export class PostService {
   createPost(post) {
     return this.http.post(this.url, JSON.stringify(post))
       .catch((error: Response) => {
-
+        if (error.status === 400) {
+          return Observable.throw(new BadInput(error.json()));
+        }
+        return Observable.throw(new AppError(error.json()));
     });
   }
 
@@ -40,8 +44,9 @@ export class PostService {
   deletePost(post) {
     return this.http.delete(`${this.url}/${post.id}`)
       .catch((error: Response) => {
-        if (error.status === 404)
+        if (error.status === 404) {
           return Observable.throw(new NotfoundError());
+        }
 
         return Observable.throw(new AppError(error));
       });

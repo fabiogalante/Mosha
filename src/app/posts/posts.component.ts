@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {PostService} from '../services/post.service';
 import {AppError} from '../common/app-erros';
 import {NotfoundError} from '../common/not-found-error';
+import {BadInput} from '../common/bad-input';
 
 
 @Component({
@@ -36,8 +37,8 @@ export class PostsComponent implements OnInit {
           this.posts.splice(0, 0, post);
         },
         (error: AppError) => {
-          if (error instanceof NotfoundError) {
-            // this.form.SetErrors(error.json());
+          if (error instanceof BadInput) {
+            // this.form.SetErrors(error.originalError);
             alert('Registro excluído');
           }
           else {
