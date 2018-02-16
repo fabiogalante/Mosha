@@ -8,6 +8,7 @@ import {BadInput} from '../common/bad-input';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 
 @Injectable()
@@ -19,6 +20,7 @@ export class DataService {
   getAll() {
     return this.http.get(this.url)
       .map(response => response.json())
+      .toPromise()
       .catch(this.handleError);
   }
 
