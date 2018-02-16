@@ -67,10 +67,9 @@ export class PostsComponent implements OnInit {
 
     this.service.delete(post.id)
       .subscribe(
-        () => {
-
-        },
+        null,
         (error: AppError) => {
+          this.posts.splice(index, 0, post);
           if (error instanceof NotfoundError) {
             alert('Este registro já foi excluído - 404');
           }
