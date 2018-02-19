@@ -20,7 +20,6 @@ export class DataService {
   getAll() {
     return this.http.get(this.url)
       .map(response => response.json())
-      .toPromise()
       .catch(this.handleError);
   }
 
