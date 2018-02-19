@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NgModule} from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 
 
 import {AppComponent} from './app.component';
@@ -23,6 +23,12 @@ import { FavoriteComponent } from './favorite/favorite.component';
 import { DirectivesComponent } from './directives/directives.component';
 import { FormBootstrapComponent } from './form-bootstrap/form-bootstrap.component';
 import {SignupFormComponent} from './signup-form/signup-form.component';
+import { PostsComponent } from './posts/posts.component';
+import {HttpModule} from '@angular/http';
+import {PostService} from './services/post.service';
+import {AppErrorHandler} from './common/app-error-handler';
+import {GithubFollowersComponent} from './github-followers/github-followers.component';
+import {GithubFollowersService} from './services/github-followers.service';
 
 
 @NgModule({
@@ -44,16 +50,23 @@ import {SignupFormComponent} from './signup-form/signup-form.component';
     FavoriteComponent,
     DirectivesComponent,
     FormBootstrapComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    PostsComponent,
+    GithubFollowersComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [
     CursosService,
     // AuthorService
+    PostService,
+    GithubFollowersService,
+    FormsModule,
+    { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
